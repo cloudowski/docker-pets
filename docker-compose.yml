@@ -2,9 +2,6 @@ version: '3.1'
 services:
     web:
         image: cloudowski/docker-pets:1.0
-        deploy:
-            mode: replicated
-            replicas: 3
         healthcheck:
             interval: 10s
             timeout: 5s
@@ -23,8 +20,6 @@ services:
     db:
         image: consul:0.7.2
         command: agent -server -ui -client=0.0.0.0 -bootstrap-expect=1
-        deploy:
-            replicas: 3
         ports:
             - 8500:8500 
         environment:
